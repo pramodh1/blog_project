@@ -1,0 +1,41 @@
+{% load static %}
+
+<div id="sidebar" >
+   <div id="sticky">
+      
+      <div id="sidebar-social" style="display: inline-block">
+         <div>
+            <a href="#" target="_blank">
+               <img src="{% static 'blog/logo.png' %}" alt="github">
+            </a>
+         </div>
+         <div>
+            <a href="#" target="_blank">
+               <img src="{% static 'blog/logo.png' %}" alt="hackerrank" >
+            </a>
+         </div>
+         <div>
+            <a href="#" target="_blank">
+               <img src="{% static 'blog/logo.png' %}" alt="instagram" >
+            </a>
+         </div>
+         <div>
+            <a href="#" target="_blank">
+               <img src="{% static 'blog/logo.png' %}" alt="linkedin">
+            </a>
+         </div>
+      </div>
+
+      <div id="sidebar-blogs">
+         <h4>Recently Added:</h4>
+         <div>
+            {% for blog in blogs %}
+               <a href="{% url 'blog:detail' blog.id %}">
+                  <p>&rsaquo; {{blog.title}}<p>
+               </a>
+            {% endfor %}
+         </div>
+      </div>
+
+   </div>
+</div>

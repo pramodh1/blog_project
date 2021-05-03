@@ -1,0 +1,56 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+{% load static %}
+<!-- **************************** -->
+
+<div class="container-fluid" id="blog_title">
+   <h1>{{ blog.title }}</h1>
+</div>
+
+<div id="content">
+   <div class="row">
+      <div class="col-8" id="id_col8">
+         <div class="container-fluid">
+            <div id="inner">
+               <div id="blog">
+
+                  <p id="date">{{ blog.date|date:'F jS Y'}}</p>
+                  
+                  <!-- Blog content -->
+                  <p id="description">
+                     {% autoescape off %}
+                     {{ blog.description | safe }}
+                     {% endautoescape %}
+                  </p>
+                  <br><br><hr>
+
+                  <!-- Comments -->
+                  <h2>Comments...</h2>
+                  <div id="add_c"><a href="#">Add Comment</a>
+                  </div>
+                  <br><br>
+                  <div class="comments">
+                     <span>No Comments Yet....</span>
+                           <span style="font-weight: bold;margin-right: 2px;">Comment Name</span><span style="font-weight: lighter; opacity: 80%; font-size: 14px; margin-left: 5px;">Date Added</span>
+                           <br><br>
+                           <span style="margin:40px; font-family:sans-serif;">Comment Body</span> <br><br><hr>
+                        <div id="add_c"><a href="#">Add Comment</a>
+                        </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="col-4" id="id_col3">
+         {% include 'blog/includes/sidebar.html' %}
+      </div>
+
+   </div>
+
+
+   </div>
+
+
+<!-- **************************** -->
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- HEADER -->
+
+<div class="container-fluid">
+   <div id="head">
+      <h1>Welcome, so many blogs are here for you.</h1>
+      <h2>Pramodh has written {{ blogs.count }} blog{{blogs.count|pluralize}} </h2>
+   </div>
+</div>
+
+   
+   <!-- CONTENT -->
+<div id="content">
+   <div id="inner">
+      <div class="row">
+         <div class="col-8" id="id_col8">
+            <h4>Select By Category</h4>
+            <form method="GET" action="{% url 'blog:all_blogs' %}">
+               <div class="form-group" >
+                  <select name='category' class="form-control">
+                     <option  selected hidden>Select Category</option>
+                     {% for category in categories %}
+                     <option value="{{ category }}">{{ category }}</option>
+                  {% endfor %}
+                  </select>
+               </div>
+               <button class="btn btn-outline-primary btn-block">Search</button>
+            </form>
+            {% if selected_blogs %}
+            <br>
+            <small>
+               Aniket has written {{ selected_blogs.count }} blog{{selected_blogs.count|pluralize}} on <span style="color:rgb(14, 124, 119);"> {{category}}</span> 
+            </small>
+            <br><br>
+            {% endif %}
+            <div id="all_blogs">
+            {% if selected_blogs %}
+            {% for blog in selected_blogs %}
+            <div class="box">
+               <a href="{% url 'blog:detail' blog.id %}">
+                  <h1>{{blog.title}}</h1>
+               </a>
+               <div id='date_category'>
+                  <div id="date">
+                     {{blog.date|date:'l | M d Y'}}</div>
+                     <div id="category">
+                        {{blog.category}}
+                     </div>
+                  </div>
+                  <div class="post-body">
+                     <p id="description">
+                        {{blog.description|striptags|truncatechars:200}}
+                        <a href="{% url 'blog:detail' blog.id %}" id="read-more">
+                           Read more
+                        </a>
+                     </p>
+                  </div>
+               </div>
+               {% endfor %}
+               {% endif %}
+               <hr>
+            <h3 style="text-align: center;color:rgb(0, 255, 242);">All Blogs</h3>
+            <br>
+            {% for blog in blogs %}
+            <div class="box">
+               <a href="{% url 'blog:detail' blog.id %}">
+                  <h1>{{blog.title}}</h1>
+               </a>
+               <div id='date_category'>
+                  <div id="date">
+                     {{blog.date|date:'l | M d Y'}}</div>
+                     <div id="category">
+                        {{blog.category}}
+                     </div>
+                  </div>
+                  <div class="post-body">
+                     <p id="description">
+                        {{blog.description|striptags|truncatechars:200}}
+                        <a href="{% url 'blog:detail' blog.id %}" id="read-more">
+                           Read more
+                        </a>
+                     </p>
+                  </div>
+               </div>
+               {% endfor %}
+            </div>
+         </div>
+         
+         <div class="col-4" id="id_col3">
+            {% include 'blog/includes/sidebar.html' %}
+         </div>
+
+      </div>
+   </div>
+</div>
+
+{% endblock %}
+

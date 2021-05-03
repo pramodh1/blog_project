@@ -1,0 +1,30 @@
+    {% load static %}
+
+
+    <!-- Navbar -->
+       <nav class="navbar navbar-expand-md navbar-light" style="background-color:#FFFFFF;">
+         <div class="container-fluid" >
+            <a class="navbar-brand" href="#">
+               <img src="{% static 'blog/logo.png' %}"class="d-inline-block align-top" alt="ASB image"><span id="brand-name">Pramodh vedula</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav">
+                  <li class="nav-item">
+                     <a class="nav-link btn btn-outline-success" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link btn btn-outline-success" href="#" target="_blank">Resume</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link btn btn-outline-primary" href="#" target="_blank">LinkedIn</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link btn btn-outline-primary active" href="{% url 'blog:all_blogs'%}" >Blogs</a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </nav> 
